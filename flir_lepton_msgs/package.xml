@@ -4,7 +4,6 @@
   <description>Flir Lepton ROS communications</description>
 
   <maintainer email="klpanagi@gmail.com">Konstantinos Panayiotou</maintainer>
-
   <license>BSD</license>
 
   <author email="klpanagi@gmail.com">Konstantinos Panayiotou</author>
@@ -19,4 +18,6 @@
   <depend>std_msgs</depend>
   <depend>sensor_msgs</depend>
 
+  <!-- Ensure the package is recognized as a provider of ROS interfaces -->
+  <member_of_group>rosidl_interface_packages</member_of_group>
 </package>

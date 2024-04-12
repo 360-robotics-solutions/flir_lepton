@@ -1,37 +1,24 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 project(flir_lepton_image_processing)
 
-find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  cv_bridge
-  #image_transport
-  dynamic_reconfigure
-  flir_lepton_msgs
-  roslint
-  )
+# Find required packages
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(cv_bridge REQUIRED)
+find_package(image_transport REQUIRED)  # Uncommented as you might still need it in ROS 2
+find_package(flir_lepton_msgs REQUIRED)  # Assuming this package has been ported to ROS 2
+find_package(ament_lint_auto REQUIRED)
+ament_lint_auto_find_test_dependencies()
 
-generate_dynamic_reconfigure_options(
-  cfg/thermal_cfg.cfg
-  )
+# Configure dynamic reconfigure like functionality using parameters in ROS 2
+# ROS 2 does not have dynamic_reconfigure in the same way. You'll have to use parameters.
 
-catkin_package(
-  CATKIN_DEPENDS
-    roscpp
-    cv_bridge
-    #image_transport
-    dynamic_reconfigure
-    flir_lepton_msgs
-  INCLUDE_DIRS
-    include
-  LIBRARIES
-  )
-
+# Include directories
 include_directories(
   include/${PROJECT_NAME}
-  ${catkin_INCLUDE_DIRS}
-  )
+)
 
-################################ Utils library #################################
+# Utils library
 add_library(${PROJECT_NAME}_utils
   src/utils/blob_detection.cpp
   src/utils/bounding_box_detection.cpp
@@ -44,31 +31,33 @@ add_library(${PROJECT_NAME}_utils
   src/utils/parameters.cpp
   src/utils/timer.cpp
   src/utils/visualization.cpp
-  )
+)
 
-# Ensure all their headers get built before any targets that need them
-add_dependencies(${PROJECT_NAME}_utils ${catkin_EXPORTED_TARGETS})
+# Link libraries
+ament_target_dependencies(${PROJECT_NAME}_utils
+  rclcpp
+  cv_bridge
+  image_transport
+  flir_lepton_msgs
+)
 
-target_link_libraries(${PROJECT_NAME}_utils
-  ${catkin_LIBRARIES}
-  )
+target_link_libraries(${PROJECT_NAME}_utils)
 
 add_subdirectory(src/processing_node)
 
-################################# ROSLINT ######################################
-# Execute via lint : catkin_make roslint_{PACKAGE_NAME}
+# ROS 2 does not use roslint, use ament_lint instead for linting
+# You may configure ament_lint options via ament_lint_auto
 
-set(ROSLINT_CPP_OPTS
-  "--filter=-whitespace/end_of_line, -build/include_order, -whitespace/blank_line, -whitespace/parens, -whitespace/comments, -build/include_what_you_use, -whitespace/braces, -whitespace/newline, -readability/multiline_string, -runtime/printf, -readability/streams")
+# Install includes, libraries, executables
+install(DIRECTORY include/
+  DESTINATION include
+)
 
-set(ROSLINT_CPP_OPTS
-  "--filter=-build/include_what_you_use, -runtime/references")
+install(TARGETS ${PROJECT_NAME}_utils
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
+)
 
-file(GLOB_RECURSE ${PROJECT_NAME}_LINT_SRCS
-  RELATIVE ${PROJECT_SOURCE_DIR}
-
-  include/*.h
-  src/*.cpp
-  )
-
-roslint_cpp(${${PROJECT_NAME}_LINT_SRCS})
+# Export information to downstream packages
+ament_package()

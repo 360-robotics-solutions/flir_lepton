@@ -6,7 +6,7 @@ published_topics:
 flir_urdf:
   camera_optical_frame: /flir_lepton_optical_frame
 iface:
-  device_port: "/dev/spidev0.0"
+  device_port: "/dev/video3"
   bits: 8
   speed: 20000000
   delay: 0

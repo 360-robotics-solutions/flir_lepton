@@ -10,7 +10,7 @@
   <url type="repository">https://github.com/klpanagi/rpi_hardware_interface.git</url>
   <author email="klpanagi@gmail.com">Konstantinos Panayiotou</author>
 
-  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>ament_cmake</buildtool_depend>
 
   <depend>rclcpp</depend>
   <depend>std_msgs</depend>

@@ -1,5 +1,4 @@
-<?xml version="1.0"?>
-<package format="2">
+<package format="3">
   <name>flir_lepton_launchers</name>
   <version>0.0.1</version>
   <description>Contains launchers for bring-up.</description>
@@ -8,16 +7,13 @@
 
   <license>BSD</license>
 
-  <author email="aggelostriadafillidis@gmail.com"> Angelos Triantafyllidis </author>
-  <author email="klpanagi@gmail.com"> Konstantinos Panayiotou</author>
+  <author email="aggelostriadafillidis@gmail.com">Angelos Triantafyllidis</author>
+  <author email="klpanagi@gmail.com">Konstantinos Panayiotou</author>
 
-  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>ament_cmake</buildtool_depend>
 
   <exec_depend>flir_lepton_sensor</exec_depend>
   <exec_depend>flir_lepton_image_processing</exec_depend>
 
-  <export>
-
-  </export>
-
+  <!-- No <export> section needed unless specifying metapackage or interface definitions -->
 </package>

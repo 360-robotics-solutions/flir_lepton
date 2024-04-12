@@ -93,21 +93,21 @@ namespace flir_lepton_image_processing
       flir_lepton_msgs::CandidateRoiMsg roiMsg;
 
       // Push back the keypoint
-      roiMsg.keypointX = conveyor.rois[i].keypoint.pt.x;
-      roiMsg.keypointY = conveyor.rois[i].keypoint.pt.y;
+      roiMsg.keypoint_x = conveyor.rois[i].keypoint.pt.x;
+      roiMsg.keypoint_y = conveyor.rois[i].keypoint.pt.y;
 
       // Push back the bounding rectangle's vertices
       for (int v = 0; v < conveyor.rois[i].rectangle.size(); v++)
       {
-        roiMsg.verticesX.push_back(conveyor.rois[i].rectangle[v].x);
-        roiMsg.verticesY.push_back(conveyor.rois[i].rectangle[v].y);
+        roiMsg.vertices_x.push_back(conveyor.rois[i].rectangle[v].x);
+        roiMsg.vertices_y.push_back(conveyor.rois[i].rectangle[v].y);
       }
 
       // Push back the blob's outline points
       for (int o = 0; o < conveyor.rois[i].outline.size(); o++)
       {
-        roiMsg.outlineX.push_back(conveyor.rois[i].outline[o].x);
-        roiMsg.outlineY.push_back(conveyor.rois[i].outline[o].y);
+        roiMsg.outline_x.push_back(conveyor.rois[i].outline[o].x);
+        roiMsg.outline_y.push_back(conveyor.rois[i].outline[o].y);
       }
 
       // Push back one roi to the rois vector message
@@ -242,8 +242,8 @@ namespace flir_lepton_image_processing
       RoiConveyor roi;
 
       // Recreate the roi's keypoint
-      roi.keypoint.pt.x = candidateRoisVector[i].keypointX;
-      roi.keypoint.pt.y = candidateRoisVector[i].keypointY;
+      roi.keypoint.pt.x = candidateRoisVector[i].keypoint_x;
+      roi.keypoint.pt.y = candidateRoisVector[i].keypoint_y;
 
       // Recreate the roi's rectangle points
       std::vector<cv::Point2f> renctangleVertices;
@@ -251,8 +251,8 @@ namespace flir_lepton_image_processing
         v < candidateRoisVector[i].verticesX.size(); v++)
       {
         cv::Point2f vertex;
-        vertex.x = candidateRoisVector[i].verticesX[v];
-        vertex.y = candidateRoisVector[i].verticesY[v];
+        vertex.x = candidateRoisVector[i].vertices_x[v];
+        vertex.y = candidateRoisVector[i].vertices_y[v];
         renctangleVertices.push_back(vertex);
       }
       roi.rectangle = renctangleVertices;
@@ -263,8 +263,8 @@ namespace flir_lepton_image_processing
         o < candidateRoisVector[i].outlineX.size(); o++)
       {
         cv::Point2f outlinePoint;
-        outlinePoint.x = candidateRoisVector[i].outlineX[o];
-        outlinePoint.y = candidateRoisVector[i].outlineY[o];
+        outlinePoint.x = candidateRoisVector[i].outline_x[o];
+        outlinePoint.y = candidateRoisVector[i].outline_y[o];
         outlinePoints.push_back(outlinePoint);
       }
       roi.outline= outlinePoints;

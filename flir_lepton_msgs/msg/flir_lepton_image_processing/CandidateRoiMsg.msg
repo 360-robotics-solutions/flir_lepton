@@ -1,19 +1,19 @@
 Header header
 
 # keypoint.pt.x
-float32 keypointX
+float32 keypoint_x
 
 # keypoint.pt.y
-float32 keypointY
+float32 keypoint_y
 
 # bounding box's vertices X coordinate
-float32[] verticesX
+float32[] vertices_x
 
 # bounding box's vertices Y coordinate
-float32[] verticesY
+float32[] vertices_y
 
 # blob's outline points X coordinate
-float32[] outlineX
+float32[] outline_x
 
 # blob's outline points X coordinate
-float32[] outlineY
+float32[] outline_y

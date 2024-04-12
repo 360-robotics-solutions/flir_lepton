@@ -11,7 +11,7 @@
   <author email="aphilotheou@gmail.com">Alexandros Philotheou</author>
   <author email="mtsardoulias@gmail.com">Manos Tsardoulias</author>
 
-  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>ament_cmake</buildtool_depend>
 
   <!-- Convert ROS 1 build and test dependencies to their ROS 2 equivalents -->
   <build_depend>ament_lint_auto</build_depend>  <!-- Replaces roslint for ROS 2 -->

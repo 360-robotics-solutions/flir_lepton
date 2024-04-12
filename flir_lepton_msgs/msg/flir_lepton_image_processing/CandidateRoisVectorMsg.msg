@@ -1,5 +1,5 @@
 Header header
 
-CandidateRoiMsg[] candidateRois
+CandidateRoiMsg[] candidate_rois
 
 sensor_msgs/Image image

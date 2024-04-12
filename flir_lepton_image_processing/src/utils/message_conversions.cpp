@@ -307,7 +307,7 @@ namespace flir_lepton_image_processing
 
     // Recreate the conveyor
     fromCandidateRoiMsgToConveyor(
-      roisMsg.candidateRois,
+      roisMsg.candidate_rois,
       conveyor);
 
     #ifdef DEBUG_TIME

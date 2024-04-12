@@ -179,7 +179,7 @@ namespace flir_lepton_image_processing
       thermalImage,
       &thermalCandidateRoisMsg,
       sensor_msgs::image_encodings::TYPE_8UC1,
-      msg.thermalImage);
+      msg.thermal_Image);
 
     // Fill the thermal message to be sent
     flir_lepton_msgs::ThermalAlert thermalMsg;

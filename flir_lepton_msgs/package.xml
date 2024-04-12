@@ -10,7 +10,7 @@
   <author email="klpanagi@gmail.com">Konstantinos Panayiotou</author>
   <author email="aggelostriadafillidis@gmail.com">Angelos Triantafyllidis</author>
 
-  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>catkin</buildtool_depend>
 
   <!-- ROS 2 message and service generation dependencies -->
   <build_depend>rosidl_default_generators</build_depend>

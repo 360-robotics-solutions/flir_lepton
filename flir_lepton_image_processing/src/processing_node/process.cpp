@@ -122,7 +122,7 @@ namespace flir_lepton_image_processing
         // Obtain the thermal image. Since the image is in a format of
         // sensor_msgs::Image, it has to be transformed into a cv format in order
         // to be processed. Its cv format will be CV_8UC1.
-        MessageConversions::extractImageFromMessage(msg.thermalImage, &thermalImage,
+        MessageConversions::extractImageFromMessage(msg.thermal_image, &thermalImage,
           sensor_msgs::image_encodings::TYPE_8UC1);
           break;
       default:
